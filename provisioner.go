@@ -265,7 +265,7 @@ func (p *LocalPathProvisioner) pickConfig(storageClassName string) (*StorageClas
 	return &cfg, nil
 }
 
-func (p *LocalPathProvisioner) Provision(ctx context.Context, opts pvController.ProvisionOptions) (*v1.PersistentVolume, pvController.ProvisioningState, error) {
+func (p *LocalPathProvisioner) Provision(_ context.Context, opts pvController.ProvisionOptions) (*v1.PersistentVolume, pvController.ProvisioningState, error) {
 	cfg, err := p.pickConfig(opts.StorageClass.Name)
 	if err != nil {
 		return nil, pvController.ProvisioningFinished, err
@@ -401,7 +401,7 @@ func (p *LocalPathProvisioner) provisionFor(opts pvController.ProvisionOptions, 
 	}, pvController.ProvisioningFinished, nil
 }
 
-func (p *LocalPathProvisioner) Delete(ctx context.Context, pv *v1.PersistentVolume) (err error) {
+func (p *LocalPathProvisioner) Delete(_ context.Context, pv *v1.PersistentVolume) (err error) {
 	cfg, err := p.pickConfig(pv.Spec.StorageClassName)
 	if err != nil {
 		return err

@@ -7,9 +7,8 @@ cd $(dirname $0)/..
 
 mkdir -p dist/artifacts
 cp bin/local-path-provisioner* dist/artifacts/
-ls dist/artifacts/
 
-IMAGE=${REPO}/local-path-provisioner:${TAG}
+IMAGE=jamesluhz/local-path-provisioner:${TAG}
 DOCKERFILE=package/Dockerfile
 if [ -e ${DOCKERFILE}.${ARCH} ]; then
     DOCKERFILE=${DOCKERFILE}.${ARCH}
